@@ -1,0 +1,47 @@
+def main():
+    
+    print('Contact Book Menu:')
+    print('1. Add a contact')
+    print('2. Delete a contact')
+    print('3. Search for a contact')
+    print('4. Display all contacts')
+    print('5. Exit')
+    print('')
+
+    book = {}
+    
+    while True:
+        choice = input('Enter your choice: ')
+
+        if choice in ('1','2','3','4'):
+            if choice == '1':
+                name = input('Enter name: ')
+                number = input('Enter phone number: ')
+                book[name] = number
+                print('Contact added.')
+            if choice == '2':
+                remove_contact = input('Provide the name of the contact to remove: ')
+                if remove_contact in book:
+                    del book[remove_contact]
+                    print('Contact deleted')
+                else:
+                    print("Contact doesn't exist.")
+            if choice == '3':
+                search_contact = input('Enter name of contact: ')
+                if search_contact in book:
+                    print(f'{search_contact}:{book[search_contact]}')
+                else:
+                    print("Contact doesn't exist.")
+            if choice == '4':
+                if book:
+                    print('Contacts:')
+                    for entry in book: print(f'{entry}:{book[entry]}')
+                else:
+                    print('Contact book is empty')
+        elif choice == '5':
+            break
+        else:
+            print('Invalid input')
+
+
+main()
